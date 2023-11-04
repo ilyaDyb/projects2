@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 def get_data(url):
     headers = {
-        "User-Agent" : f"{current_app.config['HEADERS']}"
+        "User-Agent": f"{current_app.config['HEADERS']}"
     }
     try:
         response = requests.get(url=url, headers=headers)

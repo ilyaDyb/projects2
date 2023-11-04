@@ -2,7 +2,7 @@ from flask import current_app
 import requests
 
 
-"""4d243eb5-d00f-440b-ab27-d34f17590e94"""
+"""4d243eb5-d00f-440b-ab27-d34f17590e94 """
 
 
 def get_data():
