@@ -1,11 +1,10 @@
 import requests
-from flask import current_app
 from bs4 import BeautifulSoup
 
 
 def get_data(url):
     headers = {
-        "User-Agent": f"{current_app.config['HEADERS']}"
+        "User-Agent": 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.933 YaBrowser/23.9.3.933 Yowser/2.5'
     }
     try:
         response = requests.get(url=url, headers=headers)
@@ -40,4 +39,4 @@ def get_info():
 
 
 if __name__ == "__main__":
-    get_info()
+    print(get_info())
