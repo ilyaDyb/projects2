@@ -12,9 +12,9 @@
       <div class="row">
           <div class="col-8">
               <h2>Новости python </h2>
-              {% for new in news_list %}
-              <h3><a href="{{  new.url  }}">{{ new.title }}</a></h3>
-              <p>{{ new.date }}</p>
+              {% for news in news_list %}
+              <h3><a href="{{  news.url  }}">{{ news.title }}</a></h3>
+              <p>{{ news.published.strftime('%d.%m.%Y') }}</p>
               <hr />
               {% endfor %}
               </div>

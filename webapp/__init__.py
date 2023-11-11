@@ -1,8 +1,8 @@
 from flask import Flask, render_template
 
-from webapp.model import db
+from webapp.model import db, News
 from webapp.api_weather import get_weather
-from webapp.get_news import get_info
+
 """set FLASK_APP=webapp && set FLASK_ENV=development && set DEBUG=1 && flask run """
 
 
@@ -14,7 +14,7 @@ def create_app():
     @app.route('/')
     def index():
         info_about_weather = get_weather()
-        news_list = get_info()
+        news_list = News.query.order_by(News.published.desc()).all()
 
         title = "Новостной сайт"
         weather_in_moscow = 'Погода в Москве'
