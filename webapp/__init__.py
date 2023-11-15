@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 
+from webapp.forms import LoginForm
 from webapp.model import db, News
 from webapp.api_weather import get_weather
 
@@ -22,4 +23,10 @@ def create_app():
         return render_template("index.html", page_title=title, weather_in_moscow=weather_in_moscow,
                                news_list=news_list,
                                info_about_weather=info_about_weather)
+
+    @app.route('/login')
+    def login():
+        title = 'Авторизация'
+        login_form = LoginForm()
+        return render_template('login.html', page_title=title, form=login_form)
     return app
