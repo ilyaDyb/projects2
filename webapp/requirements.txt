@@ -5,5 +5,5 @@ lxml==4.9.3
 Flask-SQLAlchemy==3.1.1
 flask-WTF==1.2.1
 Jinja2==3.1.2
-flask-login-0.6.3
+flask-login==0.4.1
 
