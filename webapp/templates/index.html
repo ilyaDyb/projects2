@@ -9,12 +9,13 @@
   <body class="text-bg-dark">
       <header class="d-flex flex-row-reverse bd-highlight">
           <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="/login" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="/logout" class="nav-link">Logout</a></li>
+            <li class="nav-item"><a href="{{ url_for('news.index') }}" class="nav-link active" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="{{ url_for('user.login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{ url_for('user.logout') }}" class="nav-link">Logout</a></li>
           </ul>
-        </header>
+      </header>
         <div class="container">
+            {% include 'menu.html' %}
               <h1>
                   Новости
               </h1>
