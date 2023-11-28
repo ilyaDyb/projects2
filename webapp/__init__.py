@@ -1,21 +1,20 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
-
-from webapp.model import db
+from webapp.db import db
 from webapp.api_weather import get_weather
 from webapp.user.models import User
 from webapp.user.views import blueprint as user_blueprint
 from webapp.admin.views import blueprint as admin_blueprint
 from webapp.news.views import blueprint as news_blueprint
 
-"""set FLASK_APP=webapp && set FLASK_ENV=development && set DEBUG=1 && flask --debug run """
-
 
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
     db.init_app(app)
+    migrate = Migrate(app, db)
 
     login_manager = LoginManager()
     login_manager.init_app(app)
