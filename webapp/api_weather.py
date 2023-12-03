@@ -1,4 +1,3 @@
-from flask import current_app
 import requests
 
 
@@ -6,8 +5,8 @@ import requests
 
 
 def get_data():
-    url = f'{current_app.config["WEATHER_URL"]}'
-    headers = {'X-Yandex-API-Key': f'{current_app.config["API_KEY"]}'}
+    url = f'https://api.weather.yandex.ru/v2/informers'
+    headers = {'X-Yandex-API-Key': f'4d243eb5-d00f-440b-ab27-d34f17590e94'}
     params = {
         'lat': '55.755863',
         'lon': '37.6177',
@@ -27,20 +26,18 @@ def get_data():
 
 def get_weather():
     result_json = get_data()
-
     try:
-        forecasts = result_json['forecasts'][0]
-        weather_day = forecasts['parts']['day']
+        forecasts = result_json['forecast']
+        weather_day = forecasts['parts']
         date = forecasts['date']
         sunrise = forecasts["sunrise"]
         sunset = forecasts["sunset"]
-        temp_min = weather_day["temp_min"]
-        temp_avg = weather_day["temp_avg"]
-        wind_speed = weather_day["wind_speed"]
-        wind_dir = weather_day["wind_dir"]
-        pressure_mm = weather_day["pressure_mm"]
-
-    except Exception as _ex:
+        temp_min = weather_day[0]["temp_min"]
+        temp_avg = weather_day[0]["temp_avg"]
+        wind_speed = weather_day[0]["wind_speed"]
+        wind_dir = weather_day[0]["wind_dir"]
+        pressure_mm = weather_day[0]["pressure_mm"]
+    except Exception:
         return False
 
     all_info = f"Дата: {date}\nВосход: {sunrise}\nЗакат: {sunset}\nМин. Температура: {temp_min}\nСред. Температура: {temp_avg}\nСкорость ветра: {wind_speed}м/с\nНаправление ветра: {wind_dir}\nДавление: {pressure_mm}мм рт.ст"
