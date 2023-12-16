@@ -1,6 +1,5 @@
 from flask import Flask
 from flask_login import LoginManager
-from flask_migrate import Migrate
 
 from webapp.db import db
 from webapp.api_weather import get_weather
@@ -14,7 +13,6 @@ def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('config.py')
     db.init_app(app)
-    migrate = Migrate(app, db)
 
     login_manager = LoginManager()
     login_manager.init_app(app)

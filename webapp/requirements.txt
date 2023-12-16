@@ -7,4 +7,9 @@ flask-WTF==1.2.1
 flask-migrate==2.3.1
 Jinja2==3.1.2
 flask-login==0.4.1
-email_validator=2.1.0.
+email_validator=2.1.0
+amqp==5.2.0
+async-timeout==4.0.3
+billiard==4.2.0
+celery==5.3.6
+redis==5.0.1

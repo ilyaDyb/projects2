@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{  page_title  }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<!--    <link rel="icon" href="/images/favicon.ico">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+    <!-- and it's easy to individually load additional languages -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+
+    <script>hljs.highlightAll();</script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   </head>
   <body class="text-bg-dark">
   <header class="d-flex flex-row-reverse bd-highlight">
@@ -32,42 +39,10 @@
         </div>
         <div class="container">
             {% include 'menu.html' %}
-              <h1>
-                  Новости
-              </h1>
               <div class="row">
-                  <div class="col">
-                      {% with messages = get_flashed_messages() %}
-                        {% if messages %}
-                          <div class="alert alert-success d-flex align-items-center" role="alert">
-                              {% for message in messages %}
-                                    {{ message }}</br>
-                              {% endfor %}
-                          </div>
-                        {% endif %}
-                      {% endwith %}
-                      <h2 class="text-white">Новости python </h2>
-                      {% for news in news_list %}
-                      <h3><a href="{{  url_for('news.single_news', news_id=news.id) }}">{{ news.title }}</a></h3>
-                      <p>{{ news.published.strftime('%d.%m.%Y') }}</p>
-                      <hr />
-                      {% endfor %}
-                      </div>
-                      <div class="col-1">
-                          <h2>{{  weather_in_moscow  }}</h2>
-                          {% if info_about_weather == False %}
-                             <h1>Сервис погоды временно не доступен</h1>
-                          {% else %}
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.0  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.1  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.2  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.3  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.4  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.5  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.6  }}</h2>
-                             <h2 class="badge text-bg-info rounded-pill">{{  info_about_weather.7  }}</h2>
-                          {% endif %}
-                      </div>
+                  <div class="col-10 news-content">
+                      {{ news.text|safe }}
+                  </div>
               </div>
         </div>
       <div class="container">
