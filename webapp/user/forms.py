@@ -29,3 +29,7 @@ class RegistrationForm(FlaskForm):
         email_count = User.query.filter_by(email=email.data).count()
         if email_count > 0:
             raise ValidationError("Пользователь с такой почтой уже существует")
+
+
+class SubscribeForm(FlaskForm):
+    submit = SubmitField("Get subscribe", render_kw={"class: nav-link"})

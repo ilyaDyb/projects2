@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{  page_title  }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="login__background">
       <header class="d-flex justify-content-center py-3">
           <ul class="nav nav-pills">
             <li class="nav-item"><a href="{{ url_for('news.index') }}" class="nav-link active" aria-current="page">Home</a></li>
@@ -14,7 +15,6 @@
       </header>
       <div class="row">
           <div class="w-50 mx-auto">
-              <h1>Sign in</h1>
               {% with messages = get_flashed_messages() %}
                 {% if messages %}
               <div class="alert alert-warning" role="alert">
@@ -24,25 +24,32 @@
               </div>
                 {% endif %}
               {% endwith %}
-              <form action="{{ url_for('user.process_login') }}" method="POST">
+              <form class="form__main__login" action="{{ url_for('user.process_login') }}" method="POST">
                   {{ form.hidden_tag() }}
                   <div class="form-group">
-                      <p>Username</p>
+                      <div class="form__login">
+                      <p class="p__login">Username</p>
                       {{ form.username.tabel }}
                       {{ form.username() }}
+                      </div>
                   </div>
                   <div class="form-group">
-                      <br>
-                      <p>Password</p>
+                      <div class="form__login">
+                      <p class="p__login">Password</p>
                       {{ form.password.tabel }}
                       {{ form.password() }}
+                      </div>
                   </div>
                   <div>
-                      <div class="form-group form-check">
-                          {{ form.remember_me() }}
-                          {{ form.remember_me.label(class_="form-check-label") }}
+                      <div class="remember_me__log">
+                          <div class="form-group form-check">
+                              {{ form.remember_me() }}
+                              {{ form.remember_me.label(class_="form-check-label") }}
+                          </div>
                       </div>
+                      <div class="form__login__submit">
                       {{ form.submit() }}
+                      </div>
                   </div>
               </form>
               </div>

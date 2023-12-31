@@ -1,16 +1,9 @@
 from bs4 import BeautifulSoup
-import locale
-import platform
 from datetime import datetime
 from webapp.news.models import News
 from webapp import db
 
 from webapp.news.pasers.utils import get_data, save_news
-
-if platform.system() == 'Windows':
-    locale.setlocale(locale.LC_ALL, 'russian')
-else:
-    locale.setlocale(locale.LC_TIME, 'ru_RU')
 
 
 def get_info_from_habr():

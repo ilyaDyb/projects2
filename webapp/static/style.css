@@ -1,3 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap');
+
+
+a:not(.nav-link){
+    color: #3AAACF
+}
+
+a:hover:not(.nav-link) {
+    color: #ffff99;
+    text-decoration: underline;
+}
+
+
 .news-content img{
     max-width: 100%;
+}
+
+.text-bg-dark{
+    background: url("https://cdna.artstation.com/p/assets/images/images/048/311/012/4k/tim-barton-skyboxes-8-22-21-1.jpg")  no-repeat center top;
+	height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+/* a news and single news*/
+
+a.news:hover {
+    color: #ffff99;
+    text-decoration: underline;
+}
+
+a.news {
+    color: #fff;
+    text-decoration: none;
+}
+
+div.col-8 news-content{
+    top: -100px;
+}
+
+
+/*a.news:visited {
+    color: grey;
+}
+*/
+
+
+.weather__h2{
+    text-shadow: 5px 5px 10px blue;
+    font-family: 'Cinzel', serif;
+}
+
+.news__h2{
+    font-family: 'Cinzel', serif;
+    text-shadow: 5px 5px 10px #E0B0FF;
+}
+
+
+header {
+    background:black;
+    width: 100%;
+    filter: drop-shadow(0 0 10px white);
+}
+
+input.submit{
+    position: relative;
+    top: 2px;
+    /*right: -92.5%;*/
+    right: -83.6vh;
+    background:#7FFFD4;
+    cursor:pointer;
+    border-radius: 10%;
+}
+
+/* menu */
+
+span.menu__user-link{
+    width: 80px;
+    height: 80px;
+    top: 6px;
+    right: 10px;
+    z-index: 3;
+    position: absolute;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+a.menu__user-link{
+    color: red;
+}
+
+
+/* a downmenu */
+
+a.down__menu{
+    text-decoration: none;
+    color: white;
+}
+
+a.down__menu:hover{
+    text-decoration: underline;
+    color: #ffff99;
+}
+
+/* forms reg*/
+
+div.form__registration{
+    position: relative;
+    width: 89%;
+    right: -19px;
+    top: -12px
+}
+
+form.form__main__reg{
+  position: relative;
+  padding: 50px;
+  background: #000;
+  position: center;
+  width: 450px;
+  height: 450px;
+  border-radius: 10%;
+  right: -250px;
+  top: 100px;
+  background-color: #333086;
+  opacity: 0.9;
+}
+
+div.form__registration__submit{
+    position: relative;
+    right: -19px;
+    top: 20px
+}
+
+p.p__registration {
+    color: white;
+}
+
+/* forms log*/
+
+
+div.form__login{
+    position: relative;
+    width: 89%;
+    right: -19px;
+    top: -12px
+}
+
+form.form__main__login{
+    position: relative;
+    padding: 50px;
+    background: #000;
+    position: center;
+    width: 350px;
+    height: 350px;
+    border-radius: 10%;
+    right: -300px;
+    top: 100px;
+    background-color: #333086;
+    opacity: 0.9;
+}
+
+div.form__login__submit{
+    position: relative;
+    right: -19px;
+    top: 30px
+}
+
+p.p__login {
+    position: relative;
+    color: white;
+    top: 10px
+}
+
+div.remember_me__log{
+    position: relative;
+    right: -19px;
+    top: 15px;
+}
+
+
+/* body registration and login */
+
+body.registration__background{
+    background: url("https://cdna.artstation.com/p/assets/images/images/048/311/012/4k/tim-barton-skyboxes-8-22-21-1.jpg")  no-repeat center top;
+	height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+body.login__background{
+    background: url("https://cdna.artstation.com/p/assets/images/images/048/311/012/4k/tim-barton-skyboxes-8-22-21-1.jpg")  no-repeat center top;
+	height: 100vh;
+	background-size: cover;
+	background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+/* comments */
+
+span.comments__span {
+    color: #7FFFD4
+}
+
+h3.comments{
+    color: #7FFFD4
+}
+
+p.card-text__user{
+    font-weight: 900;
+}
+
+span.card-text__date{
+    font-weight: 650;
 }

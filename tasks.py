@@ -6,6 +6,8 @@ from webapp.news.pasers.habr import get_info_from_habr, get_content_from_habr
 
 flask_app = create_app()
 celery_app = Celery('tasks', broker='redis://localhost:6379/0')
+"""celery -A tasks worker --loglevel=info
+    celery -A tasks beat"""
 
 
 @celery_app.task
