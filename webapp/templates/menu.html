@@ -3,7 +3,6 @@
      {% if current_user.is_authenticated %}
       <li class="nav-item"><a href="{{ url_for('news.index') }}" class="nav-link active" aria-current="page">Home</a></li>
       <li class="nav-item"><a href="{{ url_for('user.logout') }}" class="nav-link">Logout</a></li>
-<!--      <li class="menu__user-link"><a href="#" class="menu__user-link">Logout</a></li>-->
       {% if current_user.is_admin %}
             <li class="nav-item"><a href="{{ url_for('admin.admin_index') }}" class="nav-link">Admin</a></li>
       {% endif %}
@@ -16,5 +15,9 @@
   {% if current_user.is_authenticated %}
       <span class="menu__user-link"><a href="#" class="menu__user-link">{{ current_user.username }}</a></span>
   {% endif %}
+    <form action="http://127.0.0.1:5000/news/subscribe" method="POST">
+        {{ subscribe_form.hidden_tag() }}
+        {{ subscribe_form.submit() }}
+    </form>
 
 </header>

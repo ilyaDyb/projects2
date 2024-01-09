@@ -12,3 +12,7 @@ class CommentForm(FlaskForm):
     def validate_news_id(self, news_id):
         if not News.query.get(news_id.data):
             raise ValidationError("News id error")
+
+
+class GetSubscribe(FlaskForm):
+    submit = SubmitField('Subscribe', render_kw={"class": "btn__submit"})

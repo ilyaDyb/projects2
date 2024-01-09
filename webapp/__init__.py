@@ -1,14 +1,14 @@
 from flask import Flask
 from flask_login import LoginManager
+from flask_migrate import Migrate
 
-from webapp.db import db
+from webapp.about.views import blueprint as info_and_libs_blueprint
+from webapp.admin.views import blueprint as admin_blueprint
 from webapp.api_weather import get_weather
+from webapp.db import db
+from webapp.news.views import blueprint as news_blueprint
 from webapp.user.models import User
 from webapp.user.views import blueprint as user_blueprint
-from webapp.admin.views import blueprint as admin_blueprint
-from webapp.news.views import blueprint as news_blueprint
-from webapp.about.views import blueprint as info_and_libs_blueprint
-from flask_migrate import Migrate
 
 
 def create_app():

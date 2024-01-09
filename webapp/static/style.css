@@ -13,6 +13,7 @@ a:hover:not(.nav-link) {
 
 .news-content img{
     max-width: 100%;
+    height: 500px;
 }
 
 .text-bg-dark{
@@ -36,6 +37,19 @@ a.news {
 
 div.col-8 news-content{
     top: -100px;
+}
+
+.btn__submit{
+    border: 0;
+    color: white;
+    background-color: black;
+    margin-top: 7px;
+}
+
+
+.btn__submit:hover{
+    text-decoration: underline;
+    text-decoration-color: red;
 }
 
 
@@ -89,6 +103,7 @@ span.menu__user-link{
 
 a.menu__user-link{
     color: red;
+    text-decoration: none;
 }
 
 
@@ -214,4 +229,13 @@ p.card-text__user{
 
 span.card-text__date{
     font-weight: 650;
+}
+
+
+/* info page */
+div.container-info-page{
+    position: absolute;
+    top: 100px;
+    left: 16%;
+    width: 1500px;
 }
