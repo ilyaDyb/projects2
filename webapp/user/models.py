@@ -20,5 +20,9 @@ class User(db.Model, UserMixin):
     def is_admin(self):
         return self.role == "admin"
 
+    @property
+    def is_subscriber(self):
+        return self.role == "subscriber"
+
     def __repr__(self):
         return '<User {} ID {}>'.format(self.username, self.id)

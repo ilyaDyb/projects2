@@ -15,9 +15,4 @@
   {% if current_user.is_authenticated %}
       <span class="menu__user-link"><a href="#" class="menu__user-link">{{ current_user.username }}</a></span>
   {% endif %}
-    <form action="http://127.0.0.1:5000/news/subscribe" method="POST">
-        {{ subscribe_form.hidden_tag() }}
-        {{ subscribe_form.submit() }}
-    </form>
-
 </header>

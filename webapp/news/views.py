@@ -31,9 +31,7 @@ def single_news(news_id):
     if not my_news:
         abort(404)
     comment_form = CommentForm(news_id=my_news.id)
-    subscribe_form = GetSubscribe()
-    return render_template('single_news.html', page_title=my_news.title, news=my_news, comment_form=comment_form,
-                           subscribe_form=subscribe_form)
+    return render_template('single_news.html', page_title=my_news.title, news=my_news, comment_form=comment_form)
 
 
 @blueprint.route("/news/comment", methods=['POST'])

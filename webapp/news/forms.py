@@ -2,11 +2,13 @@ from flask_wtf import FlaskForm
 from wtforms import HiddenField, SubmitField, StringField
 from wtforms.validators import DataRequired, ValidationError
 from webapp.news.models import News
+from wtforms.widgets import TextArea
 
 
 class CommentForm(FlaskForm):
     news_id = HiddenField('ID', validators=[DataRequired()])
-    comment_text = StringField("Your comment", validators=[DataRequired()], render_kw={"class": 'form-control'})
+    comment_text = StringField("Your comment", validators=[DataRequired()], render_kw={"class": 'form-control'},
+                               widget=TextArea())
     submit = SubmitField('Send', render_kw={"class": "submit"})
 
     def validate_news_id(self, news_id):

@@ -9,6 +9,8 @@ from webapp.db import db
 from webapp.news.views import blueprint as news_blueprint
 from webapp.user.models import User
 from webapp.user.views import blueprint as user_blueprint
+from webapp.community.views import blueprint as community_blueprint
+from webapp.community.discussions.views import blueprint as discussions_blueprint
 
 
 def create_app():
@@ -16,7 +18,6 @@ def create_app():
     app.config.from_pyfile('config.py')
     db.init_app(app)
     migrate = Migrate(db=db, app=app)
-
     login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'user.login'
@@ -24,6 +25,8 @@ def create_app():
     app.register_blueprint(admin_blueprint)
     app.register_blueprint(news_blueprint)
     app.register_blueprint(info_and_libs_blueprint)
+    app.register_blueprint(community_blueprint)
+    app.register_blueprint(discussions_blueprint)
 
     @login_manager.user_loader
     def load_user(user_id):

@@ -129,17 +129,16 @@ div.form__registration{
 }
 
 form.form__main__reg{
-  position: relative;
-  padding: 50px;
-  background: #000;
-  position: center;
-  width: 450px;
-  height: 450px;
-  border-radius: 10%;
-  right: -250px;
-  top: 100px;
-  background-color: #333086;
-  opacity: 0.9;
+    position: relative;
+    padding: 50px;
+    background: #000;
+    width: 450px;
+    height: 450px;
+    border-radius: 10%;
+    background-color: #333086;
+    opacity: 0.9;
+    margin: 0 auto;
+    top: 100px;
 }
 
 div.form__registration__submit{
@@ -166,14 +165,13 @@ form.form__main__login{
     position: relative;
     padding: 50px;
     background: #000;
-    position: center;
     width: 350px;
     height: 350px;
     border-radius: 10%;
-    right: -300px;
-    top: 100px;
     background-color: #333086;
     opacity: 0.9;
+    margin: 0 auto;
+    top: 100px;
 }
 
 div.form__login__submit{
@@ -238,4 +236,26 @@ div.container-info-page{
     top: 100px;
     left: 16%;
     width: 1500px;
+}
+
+/* community */
+div.community-block{
+    background-color: black;
+    width: auto;
+    height: auto;
+    border-radius: 5px;
+    border: solid white 1px;
+    /*position: relative;*/
+    /*left: 16%;*/
+
+}
+
+/* discussions */
+.form-text{
+    width: 500px;
+    height: 300px;
+}
+
+.form-title{
+    width: 500px;
 }
