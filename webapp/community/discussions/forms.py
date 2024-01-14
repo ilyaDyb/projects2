@@ -14,7 +14,7 @@ class DiscussionForm(FlaskForm):
 
 
 class AnswerForm(FlaskForm):
-    id = HiddenField("ID", validators=[DataRequired()])
+    id_discussion = HiddenField("ID", validators=[DataRequired()])
     text = StringField("Text", validators=[DataRequired()], render_kw={"placeholder": "Введите ваш ответ"},
                        widget=TextArea())
     submit = SubmitField("Send")

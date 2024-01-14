@@ -259,3 +259,9 @@ div.community-block{
 .form-title{
     width: 747px;
 }
+
+.form-to-create-answer{
+    width: 30%;
+    background-color: black;
+    border: solid white 1px;
+}

@@ -1,9 +1,9 @@
-from flask import render_template, Blueprint, redirect, flash, url_for
+from flask import render_template, Blueprint, redirect, flash, url_for, abort
 from flask_login import login_required, current_user
 
 from webapp import db
-from webapp.community.discussions.forms import DiscussionForm
-from webapp.community.discussions.models import Discussions
+from webapp.community.discussions.forms import DiscussionForm, AnswerForm
+from webapp.community.discussions.models import Discussions, Answers
 from webapp.user.models import User
 from webapp.utils import get_redirect_target
 
@@ -41,11 +41,31 @@ def delete_discussions(id):
         db.session.commit()
         return redirect("http://127.0.0.1:5000/community")
     except:
-        flash("При удалении формы произошла ошибка")
+        flash("При удалении вопроса произошла ошибка")
 
 
 @blueprint.route('/community/discussion/<int:discussion_id>')
 def user_discussion(discussion_id):
     user_question = Discussions.query.get(discussion_id)
     user = User.query.get(user_question.autor)
-    return render_template("single_discussion.html", user_discussion=user_question, user=user)
+
+    form = AnswerForm(id_discussion=user_question.id)
+    form.id_discussion.data = discussion_id
+    return render_template("single_discussion.html", user_discussion=user_question, user=user,
+                           form=form, discussion_id=form.id_discussion.data)
+
+
+@blueprint.route("/community/discussions/add-answer", methods=["POST"])
+@login_required
+def add_answer():
+    form = AnswerForm()
+    if form.validate_on_submit():
+        if Discussions.query.filter(Discussions.id == form.id_discussion.data).first():
+            new_answer = Answers(text=form.text.data, user_id=current_user.id, discussion_id=form.id_discussion.data)
+            db.session.add(new_answer)
+            db.session.commit()
+            flash("Ответ успешно добавлен")
+            return redirect(get_redirect_target() or url_for("discussions.user_discussion",
+                                                             discussion_id=form.id_discussion.data))
+
+    return redirect(get_redirect_target() or url_for("discussions.user_discussion"))
