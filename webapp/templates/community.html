@@ -17,19 +17,16 @@
         </div>
         <div class="col-10">
           <div class="community-block">
-            <p style="font-size: 26px; margin-right: auto; width: 88%">some text some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text</p>
-            <hr />
-            <p style="font-size: 26px; margin-right: auto; width: 88%">some text some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text</p>
-            <hr />
-            <p style="font-size: 26px; margin-right: auto; width: 88%">some text some textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome textsome text</p>
-
-      <!--      <hr />-->
+            {% for discussion in discussions_json %}
+            <a style="font-size: 19px; margin-right: auto; width: 88%; color:white; text-decoration:none;" href="/community/discussion/{{ discussion.id }}">{{ discussion.title }}</a> <span style="color: #0abab5;">{{ discussion.date.strftime("%d.%m.%Y %H:%M") }}</span>
+              <p style="font-size: 19px; margin-right: auto; width: 88%; color: red;">@{{ discussion.username }}</p>
+              <hr />
+            {% endfor %}
           </div>
         </div>
           <div class="col-2">
             <div class="disc-block" style="width: 150px; height: 30px; background-color: black; border-radius: 1%; border: solid white 1px;">
                 <a class="discussions__create-link" style="font-size: 21px; color: white; position: relative; margin-top: 5px; text-decoration: none;" href="http://127.0.0.1:5000/community/discussions/create">New discussion</a>
-          <!--      <hr />-->
             </div>
           </div>
       </div>

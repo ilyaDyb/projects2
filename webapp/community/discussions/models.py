@@ -15,3 +15,22 @@ class Discussions(db.Model):
 
     def __repr__(self):
         return f"<ID: {self.id} Title{self.title}>"
+
+
+class Answers(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    text = db.Column(db.Text, nullable=False)
+    date = db.Column(db.Date, nullable=False, default=datetime.now())
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id", ondelete="CASCADE"),
+        index=True
+    )
+    discussion_id = db.Column(
+        db.Integer,
+        db.ForeignKey("discussions.id", ondelete="CASCADE"),
+        index=True
+    )
+
+    def __repr__(self):
+        return f"ID:{self.id} USER_ID:{self.user_id} DISCUSSIONS_ID:{self.discussion_id}"

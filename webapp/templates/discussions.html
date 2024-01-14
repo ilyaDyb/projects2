@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body class="text-bg-dark" style="font-family: 'Architects Daughter', cursive;">
+{% include "menu.html" %}
     <div class="container">
         <div class="row">
             <div class="col-7">
@@ -22,12 +23,15 @@
                 <div>
                     <form action="{{ url_for('discussions.creating_discussion') }}" method="POST">
                         <div>
+                            {{ form.hidden_tag() }}
                             {{ form.title() }}
                         </div>
                         <div style="margin-top: 10px;">
+                            {{ form.hidden_tag() }}
                             {{ form.text()  }}
                         </div>
                         <div>
+                            {{ form.hidden_tag() }}
                             {{ form.submit() }}
                         </div>
                     </form>
