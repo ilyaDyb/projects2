@@ -1,5 +1,6 @@
 from webapp import db
 from datetime import datetime
+from sqlalchemy.orm import relationship
 
 
 class Discussions(db.Model):
@@ -13,6 +14,11 @@ class Discussions(db.Model):
         index=True
     )
 
+    answers = relationship("Answers", backref="discussions", lazy="dynamic")
+
+    def answer_count(self):
+        return self.answers.count()
+
     def __repr__(self):
         return f"<ID: {self.id} Title{self.title}>"
 
@@ -20,7 +26,7 @@ class Discussions(db.Model):
 class Answers(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.Text, nullable=False)
-    date = db.Column(db.Date, nullable=False, default=datetime.now())
+    date = db.Column(db.DateTime, nullable=False, default=datetime.now())
     user_id = db.Column(
         db.Integer,
         db.ForeignKey("user.id", ondelete="CASCADE"),

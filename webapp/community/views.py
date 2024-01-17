@@ -10,19 +10,14 @@ def community_page():
     discussions_json = []
     discussions_list = Discussions.query.filter(Discussions.title.isnot(None)).order_by(Discussions.date.desc()).all()
     for i in discussions_list:
-        discussion_id = i.id
-        title = i.title
-        text = i.text
-        date = i.date
-        autor_id = i.autor
-        autor_username = User.query.filter_by(id=autor_id).first().username
         discussions_json.append(
             {
-                "id": discussion_id,
-                "title": title,
-                "text": text,
-                "date": date,
-                "username": autor_username,
+                "id": i.id,
+                "title": i.title,
+                "text": i.text,
+                "date": i.date,
+                "username": User.query.filter_by(id=i.autor).first().username,
+                "answer_count": i.answer_count()
             }
         )
 
