@@ -21,7 +21,8 @@ def index():
     return render_template("index.html", weather_in_moscow=weather_in_moscow,
                            news_list=news_list,
                            info_about_weather=info_about_weather,
-                           subscribe_form=subscribe_form)
+                           subscribe_form=subscribe_form,
+                           user_id=current_user.id)
 
 
 @blueprint.route("/news/<int:news_id>")

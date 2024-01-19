@@ -48,7 +48,7 @@ def delete_discussions(id):
 @blueprint.route("/community/discussions/<int:discussion_id>/update", methods=["POST", "GET"])
 @login_required
 def update_discussion(discussion_id):
-    discussion = Discussions.query.get(discussion_id)
+    discussion = Discussions.query.get_or_404(discussion_id)
     if request.method == "POST":
         form = DiscussionForm()
         if form.validate_on_submit():
@@ -112,3 +112,18 @@ def add_answer():
                                                              discussion_id=form.id_discussion.data))
 
     return redirect(get_redirect_target() or url_for("discussions.user_discussion"))
+
+
+@blueprint.route("/profile/<int:id>")
+def profile(id):
+    discussions = Discussions.query.filter(Discussions.autor == id).all()
+    discussions_json = []
+    posts_count = Discussions.query.filter(Discussions.autor == id).count()
+    for discussion in discussions:
+        discussions_json.append(
+            {
+                "title": discussion.title,
+                "url": f"http://127.0.0.1:5000/community/discussion/{discussion.id}",
+            }
+        )
+    return render_template("profile.html", discussions_json=discussions_json, posts_count=posts_count)

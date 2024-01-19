@@ -9,15 +9,15 @@ blueprint = Blueprint("community", __name__)
 def community_page():
     discussions_json = []
     discussions_list = Discussions.query.filter(Discussions.title.isnot(None)).order_by(Discussions.date.desc()).all()
-    for i in discussions_list:
+    for discussion in discussions_list:
         discussions_json.append(
             {
-                "id": i.id,
-                "title": i.title,
-                "text": i.text,
-                "date": i.date,
-                "username": User.query.filter_by(id=i.autor).first().username,
-                "answer_count": i.answer_count()
+                "id": discussion.id,
+                "title": discussion.title,
+                "text": discussion.text,
+                "date": discussion.date,
+                "username": User.query.filter_by(id=discussion.autor).first().username,
+                "answer_count": discussion.answer_count()
             }
         )
 

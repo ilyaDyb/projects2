@@ -22,16 +22,14 @@
                   {% endwith %}
                 <div style="background-color:black; border: solid white 1px; ">
                     <form action="{{ url_for('discussions.creating_discussion') }}" method="POST">
+                        {{ form.hidden_tag() }}
                         <div>
-                            {{ form.hidden_tag() }}
-                            {{ form.title(value="{{ discussion.title }}") }}
+                            {{ form.title() }}
                         </div>
                         <div style="margin-top: 10px;">
-                            {{ form.hidden_tag() }}
                             {{ form.text()  }}
                         </div>
                         <div>
-                            {{ form.hidden_tag() }}
                             {{ form.submit() }}
                         </div>
                     </form>

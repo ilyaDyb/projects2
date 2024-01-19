@@ -12,7 +12,7 @@
         <li class="nav-item"><a href="{{ url_for('user.login') }}" class="nav-link">Login</a></li>
     {% endif %}
   </ul>
-  {% if current_user.is_authenticated %}
-      <span class="menu__user-link"><a href="#" class="menu__user-link">{{ current_user.username }}</a></span>
+    {% if current_user.is_authenticated %}
+      <span class="menu__user-link"><a href="{{ url_for('discussions.profile', id=current_user.id) }}" class="menu__user-link">{{ current_user.username }}</a></span>
   {% endif %}
 </header>
