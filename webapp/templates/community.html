@@ -15,9 +15,24 @@
         <div class="col-10">
           <h1>Community</h1>
         </div>
+        {% macro render_pagination(pagination, endpoint) %}
+        <div class=pagination>
+        {%- for page in pagination.iter_pages() %}
+          {% if page %}
+            {% if page != pagination.page %}
+              <a href="{{ url_for(endpoint, page=page) }}">{{ page }}</a>
+            {% else %}
+              <strong>{{ page }}</strong>
+            {% endif %}
+          {% else %}
+            <span class=ellipsis>…</span>
+          {% endif %}
+        {%- endfor %}
+          </div>
+        {% endmacro %}
         <div class="col-10">
           <div class="community-block">
-            {% for discussion in discussions_json %}
+            {% for discussion in discussions_json -%}
             <a style="font-size: 19px; margin-right: auto; width: 88%; color:white; text-decoration:none; " href="/community/discussion/{{ discussion.id }}">{{ discussion.title }}</a> <span style="font-size: 25px; float: right; color: #0abab5;">{{ discussion.date.strftime("%H:%M | %d.%m.%Y") }}</span>
               <p style="font-size: 19px; margin-right: auto; width: 88%; color: red;">@{{ discussion.username }}</p>
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chat-dots-fill" viewBox="0 0 16 16">
@@ -25,7 +40,8 @@
               </svg>
               <span> {{ discussion.answer_count }}</span>
               <hr />
-            {% endfor %}
+            {% endfor -%}
+            <span style="position: relative; font-size: 20px; left:20px;">{{ render_pagination(discussions_list, request.endpoint) }}</span>
           </div>
         </div>
           <div class="col-2">

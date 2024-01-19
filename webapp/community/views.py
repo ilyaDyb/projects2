@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
 from webapp.community.discussions.models import Discussions
 from webapp.user.models import User
 
@@ -8,7 +8,10 @@ blueprint = Blueprint("community", __name__)
 @blueprint.route('/community')
 def community_page():
     discussions_json = []
-    discussions_list = Discussions.query.filter(Discussions.title.isnot(None)).order_by(Discussions.date.desc()).all()
+    per_page = 5
+    page = request.args.get('page', 1, type=int)
+    discussions_list = Discussions.query.filter(Discussions.title.isnot(None)).order_by(Discussions.date.desc())\
+        .paginate(page=page, per_page=per_page)
     for discussion in discussions_list:
         discussions_json.append(
             {
@@ -21,4 +24,4 @@ def community_page():
             }
         )
 
-    return render_template("community.html", discussions_json=discussions_json)
+    return render_template("community.html", **locals())
